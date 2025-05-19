@@ -1,38 +1,55 @@
+/* --- Root Variables for Consistent Theming --- */
 :root {
-    --bg-color: #ffffff;
-    --text-color: #000000;
+    --bg-color: #f7f9fa;
+    --text-color: #222;
     --primary-color: #4CAF50;
+    --secondary-color: #0094e4;
+    --accent-color: #fff;
+    --card-bg: #fff;
+    --card-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    --border-radius: 16px;
+    --transition: 0.3s cubic-bezier(.4,0,.2,1);
 }
 
+/* --- Dark Mode --- */
 [data-theme="dark"] {
-    --bg-color: #1e1e1e;
-    --text-color: #ffffff;
+    --bg-color: #181c1f;
+    --text-color: #f7f9fa;
     --primary-color: #4CAF50;
+    --secondary-color: #0094e4;
+    --accent-color: #23272a;
+    --card-bg: #23272a;
+    --card-shadow: 0 4px 24px rgba(0,0,0,0.32);
 }
 
+/* --- General Body Styles --- */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
+    min-height: 100vh;
+    transition: background-color var(--transition), color var(--transition);
 }
 
+/* --- Navigation Bar --- */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--primary-color);
-    padding: 1rem 2rem;
-    flex-wrap: wrap;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: var(--primary-color); /* Changed from gradient to solid green */
+    padding: 1.2rem 2.5rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
 }
 
 nav .logo {
     color: white;
-    font-size: 1.8rem;
-    font-weight: bold;
-    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: 700;
     letter-spacing: 2px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 nav ul {
@@ -40,7 +57,7 @@ nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    flex-wrap: wrap;
+    gap: 1.5rem;
 }
 
 nav ul li {
@@ -50,134 +67,153 @@ nav ul li {
 nav ul li a {
     color: white;
     text-decoration: none;
-    font-weight: bold;
-    font-size: 1.25rem;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: background-color 0.5s, color 0.5s;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    transition: background-color var(--transition), color var(--transition), box-shadow var(--transition);
 }
 
-nav ul li a:hover {
-    background-color: white;
+nav ul li a:hover, nav ul li a.active {
+    background-color: var(--accent-color);
     color: var(--primary-color);
-    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-.theme-switch {
-    display: flex;
-    align-items: center;
-    color: white;
-    font-size: 1rem;
-}
-
-.theme-switch input[type="checkbox"] {
-    margin-left: 0.5rem;
-}
-
+/* --- Section/Card Layout --- */
 section {
-    padding: 2rem;
-    max-width: 1000px;
-    margin: auto;
+    padding: 2.5rem 2rem;
+    max-width: 900px;
+    margin: 2rem auto;
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
     display: none;
+    animation: fadeIn 0.7s;
 }
 
 section.active {
     display: block;
 }
 
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+/* --- Headings --- */
 h2 {
     border-bottom: 2px solid var(--primary-color);
     padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
+/* --- Paragraphs --- */
+section.active p {
+    font-size: 1.1rem;
+    margin: 0.5rem 0 1rem 0;
+    line-height: 1.7;
+}
+
+/* --- Lists --- */
 ul {
     padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
-section.active p{
-    font-size: 1.1rem;
+li {
+    margin-bottom: 0.5rem;
+    font-size: 1.08rem;
 }
 
-@media (max-width: 768px) {
-    nav ul {
+/* --- Personal Info Layout --- */
+.personal-info {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.profile-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+    border: 4px solid var(--primary-color);
+    background: var(--accent-color);
+}
+
+@media (max-width: 600px) {
+    .personal-info {
         flex-direction: column;
         align-items: flex-start;
-        width: 100%;
+        gap: 1rem;
     }
-
-    nav ul li {
-        margin: 0.5rem 0;
-    }
-
-    nav ul li a {
-        width: 100%;
-        text-align: left;
+    .profile-photo {
+        width: 100px;
+        height: 100px;
     }
 }
 
+/* --- Resume Button --- */
+.resume-button {
+    display: inline-block;
+    padding: 12px 28px;
+    font-size: 1.08rem;
+    font-weight: bold;
+    color: white;
+    background: var(--primary-color); /* Changed from gradient to solid green */
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    margin-left: 0.5rem;
+}
 
-/* Stylize the external website link */
-.website-link {
-    color: #0094e4;
+.resume-button:hover {
+    background: #388e3c; /* Slightly darker green for hover */
+    transform: scale(1.06);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    cursor: pointer;
+}
+
+/* --- Links --- */
+a, .website-link, .certificate-link {
+    color: var(--secondary-color);
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s, text-shadow 0.3s;
 }
 
-.website-link:hover {
-    color: #005582;
-    text-shadow: 0 0 5px rgba(64, 188, 255, 0.5);
+a:hover, .website-link:hover, .certificate-link:hover {
+    color: var(--primary-color);
+    text-shadow: 0 0 8px rgba(0,148,228,0.15);
     cursor: pointer;
 }
 
-/* Style for the personal info section */
-.personal-info {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
+/* --- Certificate Links --- */
+.certificate-link {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
 }
 
-/* Style for the profile photo */
-.profile-photo {
-    width: 200px;
-    height: auto;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Style for the resume button */
-.resume-button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: white;
-    background-color: #4CAF50;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.resume-button:hover {
-    background-color: #45a049;
-    transform: scale(1.05);
-    cursor: pointer;
-}
-
-/* Dark Mode Styles */
+/* --- Theme Switch (Dark Mode Toggle) --- */
 .theme-switch {
     display: flex;
     align-items: center;
     color: white;
+    font-size: 1rem;
+    margin-left: 1rem;
 }
 
 .theme-switch label {
     display: inline-block;
-    width: 34px;
-    height: 20px;
+    width: 40px;
+    height: 22px;
     position: relative;
     margin-left: 0.5rem;
 }
@@ -191,20 +227,17 @@ section.active p{
 .theme-switch label .slider {
     position: absolute;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
     background-color: #ccc;
-    transition: 0.4s;
-    border-radius: 20px;
+    transition: background-color 0.4s;
+    border-radius: 22px;
 }
 
 .theme-switch label .slider:before {
     position: absolute;
     content: "";
-    height: 14px;
-    width: 14px;
+    height: 16px;
+    width: 16px;
     left: 3px;
     bottom: 3px;
     background-color: white;
@@ -212,11 +245,46 @@ section.active p{
     border-radius: 50%;
 }
 
-.theme-switch label input:checked+.slider {
-    background-color: #ccc;
+
+.theme-switch label input:checked + .slider:before {
+    transform: translateX(18px);
 }
 
-.theme-switch label input:checked+.slider:before {
-    transform: translateX(14px);
+/* --- Responsive Navigation --- */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem 1.2rem;
+    }
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+    }
+    nav ul li {
+        margin: 0.5rem 0;
+    }
+    nav ul li a {
+        width: 100%;
+        text-align: left;
+        padding: 0.7rem 1rem;
+    }
+}
+
+/* --- Miscellaneous --- */
+::-webkit-scrollbar {
+    width: 8px;
+    background: var(--card-bg);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 8px;
+}
+
+hr {
+    border: none;
+    border-top: 1.5px solid var(--primary-color);
+    margin: 2rem 0;
 }
 
