@@ -1,4 +1,3 @@
-/* --- Root Variables for Consistent Theming --- */
 :root {
     --bg-color: #f7f9fa;
     --text-color: #222;
@@ -6,12 +5,12 @@
     --secondary-color: #0094e4;
     --accent-color: #fff;
     --card-bg: #fff;
-    --card-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
     --border-radius: 16px;
-    --transition: 0.3s cubic-bezier(.4,0,.2,1);
+    --transition: 0.3s cubic-bezier(.4, 0, .2, 1);
 }
 
-/* --- Dark Mode --- */
+/*Dark Mode*/
 [data-theme="dark"] {
     --bg-color: #181c1f;
     --text-color: #f7f9fa;
@@ -19,10 +18,10 @@
     --secondary-color: #0094e4;
     --accent-color: #23272a;
     --card-bg: #23272a;
-    --card-shadow: 0 4px 24px rgba(0,0,0,0.32);
+    --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.32);
 }
 
-/* --- General Body Styles --- */
+/*Light Mode*/
 body {
     margin: 0;
     font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
@@ -32,14 +31,14 @@ body {
     transition: background-color var(--transition), color var(--transition);
 }
 
-/* --- Navigation Bar --- */
+/*Navigation Bar*/
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--primary-color); /* Changed from gradient to solid green */
+    background: var(--primary-color);
     padding: 1.2rem 2.5rem;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     border-bottom-left-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
 }
@@ -49,7 +48,7 @@ nav .logo {
     font-size: 2rem;
     font-weight: 700;
     letter-spacing: 2px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 nav ul {
@@ -74,13 +73,14 @@ nav ul li a {
     transition: background-color var(--transition), color var(--transition), box-shadow var(--transition);
 }
 
-nav ul li a:hover, nav ul li a.active {
+nav ul li a:hover,
+nav ul li a.active {
     background-color: var(--accent-color);
     color: var(--primary-color);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-/* --- Section/Card Layout --- */
+/*Section*/
 section {
     padding: 2.5rem 2rem;
     max-width: 900px;
@@ -97,11 +97,18 @@ section.active {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(30px);}
-    to { opacity: 1; transform: translateY(0);}
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* --- Headings --- */
+/*Headings*/
 h2 {
     border-bottom: 2px solid var(--primary-color);
     padding-bottom: 0.5rem;
@@ -111,14 +118,14 @@ h2 {
     letter-spacing: 1px;
 }
 
-/* --- Paragraphs --- */
+/*Paragraphs*/
 section.active p {
     font-size: 1.1rem;
     margin: 0.5rem 0 1rem 0;
     line-height: 1.7;
 }
 
-/* --- Lists --- */
+/*Lists*/
 ul {
     padding-left: 1.5rem;
     margin-bottom: 1.5rem;
@@ -129,7 +136,7 @@ li {
     font-size: 1.08rem;
 }
 
-/* --- Personal Info Layout --- */
+/*Personal Info*/
 .personal-info {
     display: flex;
     align-items: center;
@@ -142,7 +149,7 @@ li {
     height: 140px;
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
     border: 4px solid var(--primary-color);
     background: var(--accent-color);
 }
@@ -153,55 +160,59 @@ li {
         align-items: flex-start;
         gap: 1rem;
     }
+
     .profile-photo {
         width: 100px;
         height: 100px;
     }
 }
 
-/* --- Resume Button --- */
+/*Resume Button*/
 .resume-button {
     display: inline-block;
     padding: 12px 28px;
     font-size: 1.08rem;
     font-weight: bold;
     color: white;
-    background: var(--primary-color); /* Changed from gradient to solid green */
+    background: var(--primary-color);
     text-decoration: none;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
     transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
     margin-left: 0.5rem;
 }
 
 .resume-button:hover {
-    background: #388e3c; /* Slightly darker green for hover */
+    background: #388e3c;
     transform: scale(1.06);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
     cursor: pointer;
 }
 
-/* --- Links --- */
-a, .website-link, .certificate-link {
+/*Links*/
+a,
+.website-link,
+.certificate-link {
     color: var(--secondary-color);
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s, text-shadow 0.3s;
 }
 
-a:hover, .website-link:hover, .certificate-link:hover {
+a:hover,
+.website-link:hover,
+.certificate-link:hover {
     color: var(--primary-color);
-    text-shadow: 0 0 8px rgba(0,148,228,0.15);
+    text-shadow: 0 0 8px rgba(0, 148, 228, 0.15);
     cursor: pointer;
 }
 
-/* --- Certificate Links --- */
 .certificate-link {
     padding-left: 0.2rem;
     padding-right: 0.2rem;
 }
 
-/* --- Theme Switch (Dark Mode Toggle) --- */
+/*Theme Switch*/
 .theme-switch {
     display: flex;
     align-items: center;
@@ -215,7 +226,7 @@ a:hover, .website-link:hover, .certificate-link:hover {
     width: 40px;
     height: 22px;
     position: relative;
-    margin-left: 0.5rem;
+    margin: 0.5rem;
 }
 
 .theme-switch label input {
@@ -227,7 +238,10 @@ a:hover, .website-link:hover, .certificate-link:hover {
 .theme-switch label .slider {
     position: absolute;
     cursor: pointer;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-color: #ccc;
     transition: background-color 0.4s;
     border-radius: 22px;
@@ -245,26 +259,32 @@ a:hover, .website-link:hover, .certificate-link:hover {
     border-radius: 50%;
 }
 
+.theme-switch .screen-icon {
+    font-size: 1.5rem;
+}
 
-.theme-switch label input:checked + .slider:before {
+.theme-switch label input:checked+.slider:before {
     transform: translateX(18px);
 }
 
-/* --- Responsive Navigation --- */
+/*Responsive Navigation*/
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
         align-items: flex-start;
         padding: 1rem 1.2rem;
     }
+
     nav ul {
         flex-direction: column;
         gap: 0.5rem;
         width: 100%;
     }
+
     nav ul li {
         margin: 0.5rem 0;
     }
+
     nav ul li a {
         width: 100%;
         text-align: left;
@@ -272,11 +292,12 @@ a:hover, .website-link:hover, .certificate-link:hover {
     }
 }
 
-/* --- Miscellaneous --- */
+/*Scroll Bar*/
 ::-webkit-scrollbar {
     width: 8px;
     background: var(--card-bg);
 }
+
 ::-webkit-scrollbar-thumb {
     background: var(--primary-color);
     border-radius: 8px;
@@ -287,4 +308,3 @@ hr {
     border-top: 1.5px solid var(--primary-color);
     margin: 2rem 0;
 }
-
